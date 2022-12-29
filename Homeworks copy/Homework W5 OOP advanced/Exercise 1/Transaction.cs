@@ -8,10 +8,6 @@ namespace Homework_W5_OOP_advanced
         public DateTime Timestamp;
         public string? Type { get; set; }
         public decimal Amount { get; set; }
-
-            
-
-        
     }
 }
 

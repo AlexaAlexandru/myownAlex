@@ -13,54 +13,64 @@ namespace Homework_W5_OOP_advanced.Exercise1
 			set { this.balance = value; }
 		}
 
-        private List<Transaction> listOfTransactions = new List<Transaction>();
-        public Transaction transactions;
+        public List<string> Transactions { get; set; }
 
-		public BankAccount(int AccountNumber,string AccountHolder,decimal balance)
+        public BankAccount(int AccountNumber,string AccountHolder,decimal balance)
 		{
 			this.AccountHolder = AccountHolder;
 			this.AccountNumber = AccountNumber;
 			this.balance = balance;
-		}
+            this.Transactions = new List<string>();
+        }
 
-
-
-		public void Deposit (decimal amount)
+        public void Deposit(decimal amount)
 		{
-            
             Balance += amount;
-            transactions.Type = "Deposited";
-			transactions.Timestamp= DateTime.Now;
-			transactions.Amount = amount;
-			listOfTransactions.Add(Deposit());
-
+			/*
+			transaction.Type = "Deposited";
+            transaction.Timestamp= DateTime.Now;
+			transaction.Amount = amount;
+			string messageDeposit = $"{transaction.Type} {amount} on the {transaction.Timestamp}";
+			Transactions.Add(messageDeposit);
+			*/
         }
+        
 
-        private Transaction Deposit()
-        {
-            throw new NotImplementedException();
-        }
+		
+
 
         public void WithDraw(decimal amount)
-		{
-            listOfTransactions.Add(new Transaction());
+		{ 
             Balance -= amount;
-            transactions.Type = "Withdrawed";
+
+
+            /*
+             transactions.Type = "Withdrawed";
             transactions.Timestamp = DateTime.Now;
             transactions.Amount = amount;
-            
+			*/
+			
 
         }
-		public decimal GetBalance()
+
+      
+
+        public decimal GetBalance()
 		{
 			return Balance;
 		}
+
+		public List<string> GetTransactionHistory()
+		{
+			return Transactions;
+        }
+		/*
 
 		public List<Transaction> GetTransactionHistory()
 		{
 			return listOfTransactions.OrderBy(o => o.Timestamp).ToList();
 		}
-
+		*/
 
     }
 }
