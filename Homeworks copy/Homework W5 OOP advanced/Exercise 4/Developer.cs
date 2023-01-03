@@ -3,15 +3,16 @@ namespace Homework_W5_OOP_advanced
 {
 	public class Developer:Employee
 	{
-        public List<string> skills = new List<string>();
+        private List<string> _skills;
         public bool IsJunior { get; set; }
-        public Developer(string Name,int Age,double Salary,List<string> skills,bool IsJunior)
+
+        public Developer(string name,int age,double salary,List<string> skills,bool isJunior)
 		{
-            this.Name = Name;
-            this.Age = Age;
-            this.Salary = Salary;
-            this.skills = skills;
-            this.IsJunior = IsJunior;
+            this.Name = name;
+            this.Age = age;
+            this.Salary = salary;
+            _skills = skills;
+            this.IsJunior = isJunior;
 		}
 
         public override double CalculateBonus()
@@ -21,11 +22,15 @@ namespace Homework_W5_OOP_advanced
 
         public override string GetContactInfo()
         {
+            /*
             string nameEmail = Name.ToLower().Substring(0, Name.IndexOf(" "));
             string surnameEmail = Name.ToLower().Substring(Name.IndexOf(" ") + 1).Substring(0, 1);
             Email = nameEmail + "." + surnameEmail + "@";
-            object[] skillsArray = skills.ToArray();
-            string contactInfo = $"Namel :{Name},  Age :{Age}, Skills:  {skillsArray} , Email: {Email}, Phone : {Phone}";
+            string contactInfo = $"Name :{Name},  Age :{Age}, Skills:  , Email: {Email}, Phone : {Phone}";
+            */
+            string skillsString = string.Empty;
+            _skills.ForEach(l => skillsString = skillsString + l+ ",");
+            string contactInfo = $"Name :{Name},  Age :{Age}, Skills: {skillsString}";
             return contactInfo;
         }
     }

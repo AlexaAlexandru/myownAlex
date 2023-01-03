@@ -4,74 +4,53 @@ namespace Homework_W5_OOP_advanced.Exercise1
 {
 	public class BankAccount
 	{
-		public int AccountNumber { get;  set; }
-		public string AccountHolder { get;  set; }
-		public decimal balance;
-		private decimal Balance
-		{
-			get { return this.balance; }
-			set { this.balance = value; }
-		}
+		public int AccountNumber { get; set; }
+		public  string AccountHolder { get; set; }
+		private decimal Balance { get; set; }
 
-        public List<string> Transactions { get; set; }
+        private List<Transaction> Transactions { get;  set; }
 
-        public BankAccount(int AccountNumber,string AccountHolder,decimal balance)
+        public BankAccount(int accountNumber,string accountHolder,decimal balance)
 		{
-			this.AccountHolder = AccountHolder;
-			this.AccountNumber = AccountNumber;
-			this.balance = balance;
-            this.Transactions = new List<string>();
+			AccountHolder = accountHolder;
+			AccountNumber = accountNumber;
+			Balance = balance;
+            Transactions = new List<Transaction>();
         }
 
         public void Deposit(decimal amount)
 		{
             Balance += amount;
-			/*
-			transaction.Type = "Deposited";
-            transaction.Timestamp= DateTime.Now;
-			transaction.Amount = amount;
-			string messageDeposit = $"{transaction.Type} {amount} on the {transaction.Timestamp}";
-			Transactions.Add(messageDeposit);
-			*/
+			var transaction = new Transaction
+			{
+				Amount = amount,
+				Type = "Deposited",
+				Timestamp = DateTime.Now
+			};
+            Transactions.Add(transaction);
         }
         
-
-		
-
-
-        public void WithDraw(decimal amount)
+        public void Withdraw(decimal amount)
 		{ 
             Balance -= amount;
-
-
-            /*
-             transactions.Type = "Withdrawed";
-            transactions.Timestamp = DateTime.Now;
-            transactions.Amount = amount;
-			*/
-			
-
+			var transaction = new Transaction
+			{
+				Amount = amount,
+				Type = "Withdrawed",
+				Timestamp = DateTime.Now
+			};
+			Transactions.Add(transaction);
         }
-
-      
 
         public decimal GetBalance()
 		{
 			return Balance;
 		}
 
-		public List<string> GetTransactionHistory()
-		{
-			return Transactions;
-        }
-		/*
-
 		public List<Transaction> GetTransactionHistory()
 		{
-			return listOfTransactions.OrderBy(o => o.Timestamp).ToList();
-		}
-		*/
-
+			return Transactions.OrderBy(t => t.Timestamp).ToList();
+        }
     }
 }
 

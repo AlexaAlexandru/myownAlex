@@ -23,7 +23,7 @@ namespace Homework_W5_OOP_advanced
 			{
 				throw new ArgumentException("Please note that the balance can't be negative; try again");
 			}
-			Bank.GetNumAccounts();
+			Bank.NumAccounts++;
         }
 
 		public double Deposit (double amount)
@@ -52,7 +52,6 @@ namespace Homework_W5_OOP_advanced
 
 		public double GetInterest()
 		{
-			Bank.IncrementInterest();
             return Bank.CalculateInterest(Balance);
         }
 	}

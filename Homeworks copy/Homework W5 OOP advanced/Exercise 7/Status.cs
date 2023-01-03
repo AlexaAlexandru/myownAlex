@@ -1,8 +1,10 @@
 ﻿using System;
 namespace Homework_W5_OOP_advanced
 {
-	public enum Booking
+	public enum Status
 	{
+		Available,
+		Taken
 	}
 }
 
