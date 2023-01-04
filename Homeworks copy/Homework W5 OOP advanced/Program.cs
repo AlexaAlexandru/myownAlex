@@ -3,6 +3,7 @@ using Homework_W5_OOP_advanced;
 using Homework_W5_OOP_advanced.Exercise2;
 using Homework_W5_OOP_advanced.Exercise3;
 using System;
+using Homework_W5_OOP_advanced.Exercise7;
 
 //RunExercise1();
 //RunExercise2();
@@ -167,7 +168,12 @@ void RunExercise7()
     client.CheckIn(DateTime.Today.AddDays(10));
     client.CheckOut(DateTime.Today.AddDays(13));
     //Console.WriteLine(client.NumberOfNights()); //For me to check if the NumberOfNights method works
+
+    
+
 }
+
+HotelMain.Run();
 
 
 

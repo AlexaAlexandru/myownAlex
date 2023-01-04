@@ -4,8 +4,7 @@ namespace Homework_W5_OOP_advanced
 {
 	public class Reception : Hotel,Ireservation,Iaccount
 	{
-		private bool IsRoomFree { get; set; }
-		private int CostofRoom { get; set; } = 50;
+		
 
         public void CheckRoomStatus()
         {
