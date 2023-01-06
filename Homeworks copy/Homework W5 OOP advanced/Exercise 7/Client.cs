@@ -17,6 +17,7 @@ namespace Homework_W5_OOP_advanced
 			LastName = lastName;
 			Email = email;
 			Phone = phone;
+
 		}
     }
 }
