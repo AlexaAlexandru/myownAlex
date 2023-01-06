@@ -8,6 +8,7 @@ namespace Homework_W5_OOP_advanced
             BedRooms = 1;
 			Price = 50;
 		}
+
     }
 }
 
