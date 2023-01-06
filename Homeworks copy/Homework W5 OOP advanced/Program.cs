@@ -164,16 +164,14 @@ void RunExercise7()
 {
     Console.WriteLine("----Ex 7----");
 
-    Client client = new Client("Alexa", "Alexandru", "alexa.alexandru@gmail.com", 0722221452);
-    client.CheckIn(DateTime.Today.AddDays(10));
-    client.CheckOut(DateTime.Today.AddDays(13));
+    //Client client = new Client("Alexa", "Alexandru", "alexa.alexandru@gmail.com", 0722221452);
+    //client.CheckIn(DateTime.Today.AddDays(10));
+    //client.CheckOut(DateTime.Today.AddDays(13));
     //Console.WriteLine(client.NumberOfNights()); //For me to check if the NumberOfNights method works
-
-    
 
 }
 
-HotelMain.Run();
+//HotelMain.Run();
 
 
 

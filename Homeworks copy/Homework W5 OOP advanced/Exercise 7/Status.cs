@@ -4,13 +4,7 @@ namespace Homework_W5_OOP_advanced
 	public enum Status
 	{
 		Available,
-		Taken
+		Booked
 	}
-
-	public interface IDefaultStatus
-	{
-		public void SetRoomsStatus();
-    }
-
 }
 

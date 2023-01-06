@@ -1,42 +1,23 @@
 ﻿using System;
 namespace Homework_W5_OOP_advanced
 {
-	public class Client: Hotel, IChecking
+	public class Client
 	{
-		public string Name { get; set; }
-		public string Surname { get; set; }
+        public Guid Id { get; set; }
+		public string CNP { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
 		public string Email { get; set; }
-		public int Phone { get; set; }
-		private double _numberNights;
-		private DateTime _checkInDate;
-		private DateTime _checkOutDate;
-		public Client(string name,string surname,string email, int phone)
+		public string Phone { get; set; }
+		
+		public Client(Guid Id,string cnp,string firstName,string lastName,string email, string phone)
 		{
-			Name = name;
-			Surname = surname;
+			CNP = cnp;
+			FirstName = firstName;
+			LastName = lastName;
 			Email = email;
 			Phone = phone;
 		}
-
-        public void CheckIn(DateTime checkInDate)
-        {
-			_checkInDate = checkInDate;
-            Console.WriteLine($"The check-in date is {checkInDate}");
-        }
-
-        public void CheckOut(DateTime checkOutDate)
-        {
-			_checkOutDate = checkOutDate;
-            Console.WriteLine($"The check-out date is {checkOutDate}");
-        }
-
-        public double NumberOfNights()
-        {
-			_numberNights = (_checkOutDate - _checkInDate).Days;
-			return _numberNights;
-        }
-
-
     }
 }
 
