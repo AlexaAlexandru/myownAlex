@@ -8,16 +8,34 @@ namespace Homework_W5_OOP_advanced
 		public int Floor { get; set; }
 		public int BedRooms { get; set; }
 		public double Price { get; set; }
-
-		public Status BookRoom()
+		public Status StatusRoom { get; set; } = 0;
+		
+		public void ChangeRoomStatus()
 		{
-			return Status.Booked;
+			StatusRoom = Status.Booked;
 		}
 
 		public Status ClearRoom()
 		{
 			return Status.Available;
 		}
+
+		public void RoomType()
+		{
+			string message;
+			if (BedRooms == 1)
+			{
+				message = "single room";
+            }
+            if (BedRooms == 3)
+            {
+                message = "double room";
+            }
+            if (BedRooms == 3)
+            {
+                message = "luxury room";
+            }
+        }
 
 	}
 }

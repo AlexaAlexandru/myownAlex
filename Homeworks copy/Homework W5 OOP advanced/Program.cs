@@ -169,13 +169,13 @@ void RunExercise7()
     //client.CheckOut(DateTime.Today.AddDays(13));
     //Console.WriteLine(client.NumberOfNights()); //For me to check if the NumberOfNights method works
 
-    List<Room> rooms = new List<Room>();
+    //List<Room> rooms = new List<Room>();
 
-    Hotel hotel = new Hotel();
+    //Hotel hotel = new Hotel();
 
-    hotel.AddRoom();
+    //hotel.AddRoom();
 
-    hotel.ShowAllRooms();
+    //hotel.ShowAllRooms();
 
 }
 

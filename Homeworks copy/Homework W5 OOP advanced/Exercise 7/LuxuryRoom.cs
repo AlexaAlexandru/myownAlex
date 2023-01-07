@@ -2,9 +2,10 @@
 {
     public class LuxuryRoom: Room
     {
-		public LuxuryRoom()
+		public LuxuryRoom(int number, int floor)
 		{
-			BedRooms = 3;
+            Id = Guid.NewGuid();
+            BedRooms = 3;
 			Price = 150;
 		}
     }

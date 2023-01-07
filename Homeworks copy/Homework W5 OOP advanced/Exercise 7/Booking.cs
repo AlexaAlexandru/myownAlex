@@ -6,10 +6,16 @@ namespace Homework_W5_OOP_advanced
 		public Guid Id { get; set; }
 		public DateTime CheckIn { get; set; }
 		public DateTime CheckOut { get; set; }
-		Client client;
-		Room room;
+		public Client Client {  get; private set; }
+		public Room Room {  get; private set; }
 
-
+		public Booking(DateTime checkin,DateTime checkout, Client client,Room room)
+		{
+			Id = Guid.NewGuid();
+			CheckIn = checkin;
+			CheckOut = checkout;
+			Client = client;
+		}
         public double GetNumberOfNights()
         {
             double numberNights = (CheckOut - CheckIn).Days;
@@ -18,9 +24,8 @@ namespace Homework_W5_OOP_advanced
 
 		public double GetFinalPrice()
 		{
-			return GetNumberOfNights() * room.Price;
+			return GetNumberOfNights() * Room.Price;
 		}
-
 
     }
 }

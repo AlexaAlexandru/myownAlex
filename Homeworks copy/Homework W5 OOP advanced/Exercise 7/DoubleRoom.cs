@@ -2,9 +2,10 @@
 {
     public class DoubleRoom : Room
     {
-		public DoubleRoom()
+		public DoubleRoom(int number, int floor)
 		{
-			BedRooms = 2;
+            Id = Guid.NewGuid();
+            BedRooms = 2;
 			Price = 80;
 		}
     }
