@@ -16,7 +16,7 @@ namespace Homework_W5_OOP_advanced
 		Room room;
 		Booking booking;
 
-		public List<Client> Clients { get; set;}
+		public List<Client> Clients { get; set; } = new List<Client>();
 
 		public void RegisterClient()
 		{
@@ -29,9 +29,33 @@ namespace Homework_W5_OOP_advanced
 		}
 
 
-		public List<Room> Rooms { get; set; }
+		public List<Room> Rooms { get; set; } = new List<Room>();
 
-		public List<Booking> Bookings { get; set; }
+		public void AddRoom()
+		{
+			Rooms.Add(room);
+
+		}
+
+		public void UpdteRoomPrice(int price)
+		{
+
+			var changePrice = Rooms.ElementAt(room.Number)
+				.Price = price;
+		}
+
+		public void ShowAllRooms()
+		{
+			foreach (Room room in Rooms)
+			{
+				string message= $"the room {room.Number} at the floor {room.Floor} the price is {room.Price}";
+				Console.WriteLine(message);
+            }
+        }
+
+
+		public List<Booking> Bookings { get; set; } = new List<Booking>();
+
 
 
 	}
