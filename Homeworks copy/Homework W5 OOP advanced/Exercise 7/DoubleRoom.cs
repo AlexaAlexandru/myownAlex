@@ -5,6 +5,8 @@
 		public DoubleRoom(int number, int floor)
 		{
             Id = Guid.NewGuid();
+            Number = number;
+            Floor = floor;
             BedRooms = 2;
 			Price = 80;
 		}

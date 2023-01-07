@@ -6,7 +6,7 @@ namespace Homework_W5_OOP_advanced
 {
 	public class Hotel
 	{
-		public Guid Id { get; set; }
+		private Guid Id { get; set; }
 		public string HotelName { get; set; }
 		public string Location { get; set; }
 		public int PostalCode { get; set; }
@@ -25,7 +25,17 @@ namespace Homework_W5_OOP_advanced
 			Clients.RemoveAll(client => client.CNP == CNP);
 		}
 
-		public List<Room> Rooms { get; set; } = new List<Room>();
+        internal void ShowAllClients()
+        {
+			Console.WriteLine("All registered Clients: ");
+            foreach (Client client in Clients)
+            {
+                string message = $" {client.FirstName} {client.LastName}";
+                Console.WriteLine(message);
+            }
+        }
+
+        public List<Room> Rooms { get; set; } = new List<Room>();
 
 		public void AddSingleRoom(int number, int floor)
 		{
@@ -52,7 +62,7 @@ namespace Homework_W5_OOP_advanced
 		{
 			foreach (Room room in Rooms)
 			{
-				string message= $"the room {room.Number} {room.RoomType} at the floor {room.Floor} the price is {room.Price}";
+				string message= $"the room {room.Number} {room.RoomType()} at the floor {room.Floor} the price is {room.Price}";
 				Console.WriteLine(message);
             }
         }
@@ -60,45 +70,69 @@ namespace Homework_W5_OOP_advanced
 		public void ShowAvailableRooms(DateTime from,DateTime to) // still need to implement the timeframe 
 		{
 			Console.WriteLine("The following rooms are available : ");
+
 			foreach (Room room in Rooms)
 			{
 				if (room.StatusRoom==0)
 				{
-					Console.WriteLine($"{room.Number} type {room.RoomType}");
+					Console.WriteLine($"{room.Number} type {room.RoomType()}");
 				}
-			}
-		}
+				
+			}           
+        }
 
 
 		public List<Booking> Bookings { get; set; } = new List<Booking>();
 
-		public void AddBooking(Guid clientId,Guid roomId,DateTime checkIn,DateTime checkOut)
+		public void AddBooking(string CNP,int number,DateTime checkIn,DateTime checkOut)
 		{
-			Bookings.Add(new Booking(checkIn, checkOut,Clients.Find((Client client)=>client.Id==clientId),Rooms.Find((Room room)=>room.Id==roomId)));
+			var roomStatus = Rooms.First(room => room.Number == number).StatusRoom;
+
+            if (roomStatus==Status.Booked)
+			{
+				throw new InvalidRoomStatus("Please choose another room, this is already booked");
+			}
+			else
+			{
+                Bookings.Add(new Booking(Clients.First(client => client.CNP == CNP), Rooms.First(room => room.Number == number), checkIn, checkOut));
+                Rooms.Find(room => room.Number == number)
+                    .ChangeRoomStatus();
+            }
+			
 		}
 
 		public void AllBookings()
 		{
-			foreach (var item in Bookings)
+			Console.WriteLine("All bookings: ");
+
+			foreach (Booking booking in Bookings)
 			{
-				Console.WriteLine(item);
-            }
+				string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName} {booking.Client.LastName} from the {booking.CheckIn} till the {booking.CheckOut}";
+				Console.WriteLine(message);
+			}
 		}
 
 		public void ActiveBooking()
 		{
-			foreach (var item in Bookings)
+			Console.WriteLine("The active bookings are : ");
+
+			foreach (Booking booking in Bookings)
 			{
-				if (item.CheckOut>DateTime.Today)
+				if (booking.CheckOut>DateTime.Today)
 				{
-					Console.WriteLine(item);
+					string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName}{booking.Client.LastName} till the {booking.CheckOut}";
+					Console.WriteLine(message);
 				}
 			}
 		}
-		public void ClearBookingId(Guid bookingId)
+		public void ClearBookingId(string CNP)
 		{
-			Bookings.RemoveAll(b => b.Id == bookingId);
+			Bookings.Find(b => b.Client.CNP == CNP).Room.ClearRoom();
+            Bookings.RemoveAll(b => b.Client.CNP== CNP);
+
 		}
-	}
+
+        
+    }
 }
 

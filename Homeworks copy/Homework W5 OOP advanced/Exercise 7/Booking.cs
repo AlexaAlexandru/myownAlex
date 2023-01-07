@@ -9,12 +9,13 @@ namespace Homework_W5_OOP_advanced
 		public Client Client {  get; private set; }
 		public Room Room {  get; private set; }
 
-		public Booking(DateTime checkin,DateTime checkout, Client client,Room room)
+		public Booking(Client client, Room room,DateTime checkIn,DateTime checkOut)
 		{
 			Id = Guid.NewGuid();
-			CheckIn = checkin;
-			CheckOut = checkout;
+			CheckIn = checkIn;
+			CheckOut = checkOut;
 			Client = client;
+			Room = room;
 		}
         public double GetNumberOfNights()
         {

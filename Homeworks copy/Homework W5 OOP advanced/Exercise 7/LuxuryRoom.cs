@@ -5,6 +5,8 @@
 		public LuxuryRoom(int number, int floor)
 		{
             Id = Guid.NewGuid();
+            Number = number;
+            Floor = floor;
             BedRooms = 3;
 			Price = 150;
 		}

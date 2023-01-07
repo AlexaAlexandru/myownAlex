@@ -20,14 +20,14 @@ namespace Homework_W5_OOP_advanced
 			return Status.Available;
 		}
 
-		public void RoomType()
+		public string  RoomType()
 		{
-			string message;
+			string message = string.Empty;
 			if (BedRooms == 1)
 			{
 				message = "single room";
             }
-            if (BedRooms == 3)
+            if (BedRooms == 2)
             {
                 message = "double room";
             }
@@ -35,6 +35,8 @@ namespace Homework_W5_OOP_advanced
             {
                 message = "luxury room";
             }
+			return message;
+
         }
 
 	}

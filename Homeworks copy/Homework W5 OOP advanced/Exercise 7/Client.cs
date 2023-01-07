@@ -16,9 +16,17 @@ namespace Homework_W5_OOP_advanced
 			CNP = cnp;
 			FirstName = firstName;
 			LastName = lastName;
-			Email = email;
-			Phone = phone;
+            Phone = phone;
 
+            if (email.Contains("@")==false || email.Length<4 || email.Contains(".")==false)
+			{
+				throw new InvalidEmail("Please note that the mail inserted is wrong formatted");
+			}
+			else
+			{
+                Email = email;
+            }
+			
 		}
 
     }
