@@ -12,15 +12,11 @@ namespace Homework_W5_OOP_advanced
 
 		public Hotel() { }
 
-		Client client;
-		Room room;
-		Booking booking;
-
 		public List<Client> Clients { get; set; } = new List<Client>();
 
-		public void RegisterClient()
+		public void RegisterClient(string CNP,string firstName) // add parameters;
 		{
-			Clients.Add(client);
+			//Clients.Add(new Client(CNP,firstName);
 		}
 
 		public void RemoveClient( string CNP)
@@ -33,15 +29,15 @@ namespace Homework_W5_OOP_advanced
 
 		public void AddRoom()
 		{
-			Rooms.Add(room);
+			//Rooms.Add();
 
 		}
 
 		public void UpdteRoomPrice(int price)
 		{
 
-			var changePrice = Rooms.ElementAt(room.Number)
-				.Price = price;
+			//var changePrice = Rooms.ElementAt(room.Number)
+				//.Price = price;
 		}
 
 		public void ShowAllRooms()
@@ -55,7 +51,6 @@ namespace Homework_W5_OOP_advanced
 
 
 		public List<Booking> Bookings { get; set; } = new List<Booking>();
-
 
 
 	}

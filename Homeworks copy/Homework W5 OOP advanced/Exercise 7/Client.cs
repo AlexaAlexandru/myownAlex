@@ -10,8 +10,9 @@ namespace Homework_W5_OOP_advanced
 		public string Email { get; set; }
 		public string Phone { get; set; }
 		
-		public Client(Guid Id,string cnp,string firstName,string lastName,string email, string phone)
+		public Client(string cnp,string firstName,string lastName,string email, string phone)
 		{
+			Id = Guid.NewGuid();
 			CNP = cnp;
 			FirstName = firstName;
 			LastName = lastName;
