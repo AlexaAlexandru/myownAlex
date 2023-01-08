@@ -10,17 +10,28 @@ namespace Homework_W5_OOP_advanced
 		public string HotelName { get; set; }
 		public string Location { get; set; }
 		public int PostalCode { get; set; }
+        public List<Client> Clients { get; set; } = new List<Client>();
+        public List<Room> Rooms { get; set; } = new List<Room>();
+        public List<Booking> Bookings { get; set; } = new List<Booking>();
 
-		public Hotel() { }
 
-		public List<Client> Clients { get; set; } = new List<Client>();
+        public Hotel()
+        {
+			Id = Guid.NewGuid();
+        }
 
-		public void RegisterClient(string cnp, string firstName, string lastName, string email, string phone)
+        public override string ToString()
+        {
+            return $"{Id} - {HotelName} - {Location}";
+        }
+
+
+        public void RegisterClient(string cnp, string firstName, string lastName, string email, string phone)
 		{
 			Clients.Add(new Client(cnp, firstName, lastName, email, phone));
 		}
 
-		public void RemoveClient( string CNP)
+		public void RemoveClient(string CNP)
 		{
 			Clients.RemoveAll(client => client.CNP == CNP);
 		}
@@ -35,7 +46,6 @@ namespace Homework_W5_OOP_advanced
             }
         }
 
-        public List<Room> Rooms { get; set; } = new List<Room>();
 
 		public void AddSingleRoom(int number, int floor)
 		{
@@ -54,7 +64,7 @@ namespace Homework_W5_OOP_advanced
 
         public void UpdteRoomPrice(int roomNumber,double price)
 		{
-			Rooms.Find((Room room) => room.Number == roomNumber)
+			Rooms.First(room => room.Number == roomNumber)
 				.Price = price;
 		}
 
@@ -67,22 +77,10 @@ namespace Homework_W5_OOP_advanced
             }
         }
 
-		public void ShowAvailableRooms(DateTime from,DateTime to) // still need to implement the timeframe 
-		{
-			Console.WriteLine("The following rooms are available : ");
-
-			foreach (Room room in Rooms)
-			{
-				if (room.StatusRoom==0)
-				{
-					Console.WriteLine($"{room.Number} type {room.RoomType()}");
-				}
-				
-			}           
+		public Room[] GetAvailableRooms() // still need to implement the timeframe 
+        {
+            return Rooms.Where(r => r.StatusRoom == Status.Available).ToArray();
         }
-
-
-		public List<Booking> Bookings { get; set; } = new List<Booking>();
 
 		public void AddBooking(string CNP,int number,DateTime checkIn,DateTime checkOut)
 		{
@@ -96,7 +94,7 @@ namespace Homework_W5_OOP_advanced
 			{
                 Bookings.Add(new Booking(Clients.First(client => client.CNP == CNP), Rooms.First(room => room.Number == number), checkIn, checkOut));
                 Rooms.Find(room => room.Number == number)
-                    .ChangeRoomStatus();
+                    .BookRoom();
             }
 			
 		}
@@ -107,7 +105,7 @@ namespace Homework_W5_OOP_advanced
 
 			foreach (Booking booking in Bookings)
 			{
-				string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName} {booking.Client.LastName} from the {booking.CheckIn} till the {booking.CheckOut}";
+				string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName} {booking.Client.LastName} from the {booking.CheckIn} till the {booking.CheckOut}: ";
 				Console.WriteLine(message);
 			}
 		}
@@ -120,7 +118,7 @@ namespace Homework_W5_OOP_advanced
 			{
 				if (booking.CheckOut>DateTime.Today)
 				{
-					string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName}{booking.Client.LastName} till the {booking.CheckOut}";
+					string message = $"The room {booking.Room.Number} is booked by {booking.Client.FirstName}{booking.Client.LastName} till the {booking.CheckOut} with the price: {booking.GetFinalPrice()}";
 					Console.WriteLine(message);
 				}
 			}
