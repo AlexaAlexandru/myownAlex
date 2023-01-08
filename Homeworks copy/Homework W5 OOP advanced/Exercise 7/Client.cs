@@ -18,7 +18,7 @@ namespace Homework_W5_OOP_advanced
 			LastName = lastName;
             Phone = phone;
 
-            if ( email.Contains("@") || email.Length < 4 || email.Contains("."))
+            if (!email.Contains("@") || email.Length < 4 || !email.Contains("."))
 			{
 				throw new InvalidEmail("Please note that the mail inserted is wrong formatted");
 			}
