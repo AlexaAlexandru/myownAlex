@@ -16,6 +16,11 @@ namespace Homework_W5_OOP_advanced
 		{
 			return _contactInfo;
 		}
+
+		public virtual string GetEmail()
+		{
+			return Email;
+		}
 		
 	}
 }

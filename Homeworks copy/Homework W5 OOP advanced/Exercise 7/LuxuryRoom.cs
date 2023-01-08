@@ -2,9 +2,12 @@
 {
     public class LuxuryRoom: Room
     {
-		public LuxuryRoom()
+        public string View { get; set; }
+
+        public LuxuryRoom(int number, int floor): base(number, floor)
 		{
-			BedRooms = 3;
+            View = "Mountain view with paradise pool";
+            BedRooms = 3;
 			Price = 150;
 		}
     }

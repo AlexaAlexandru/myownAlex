@@ -6,7 +6,7 @@ namespace Homework_W5_OOP_advanced
         private List<string> _skills;
         public bool IsJunior { get; set; }
 
-        public Developer(string name,int age,double salary,List<string> skills,bool isJunior)
+        public Developer( string name, int age, double salary, List<string> skills, bool isJunior )
 		{
             this.Name = name;
             this.Age = age;
@@ -22,16 +22,18 @@ namespace Homework_W5_OOP_advanced
 
         public override string GetContactInfo()
         {
-            /*
+            string skillsString = string.Empty;
+            _skills.ForEach(l => skillsString = skillsString + l+ ",");
+            string contactInfo = $"Name :{Name},  Age :{Age}, Skills: {skillsString}, Email: {GetEmail()}, Phone : {Phone}";
+            return contactInfo;
+        }
+
+        public override string GetEmail()
+        {
             string nameEmail = Name.ToLower().Substring(0, Name.IndexOf(" "));
             string surnameEmail = Name.ToLower().Substring(Name.IndexOf(" ") + 1).Substring(0, 1);
             Email = nameEmail + "." + surnameEmail + "@";
-            string contactInfo = $"Name :{Name},  Age :{Age}, Skills:  , Email: {Email}, Phone : {Phone}";
-            */
-            string skillsString = string.Empty;
-            _skills.ForEach(l => skillsString = skillsString + l+ ",");
-            string contactInfo = $"Name :{Name},  Age :{Age}, Skills: {skillsString}";
-            return contactInfo;
+            return Email;
         }
     }
 }

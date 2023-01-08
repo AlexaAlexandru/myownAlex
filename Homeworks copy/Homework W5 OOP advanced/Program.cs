@@ -164,19 +164,64 @@ void RunExercise7()
 {
     Console.WriteLine("----Ex 7----");
 
-    //Client client = new Client("Alexa", "Alexandru", "alexa.alexandru@gmail.com", 0722221452);
-    //client.CheckIn(DateTime.Today.AddDays(10));
-    //client.CheckOut(DateTime.Today.AddDays(13));
-    //Console.WriteLine(client.NumberOfNights()); //For me to check if the NumberOfNights method works
+    Hotel hotel = new Hotel()
+    {
+        HotelName = "hotel 1",
+        Location = "Iasi",
+        PostalCode = 700932,
+    };
 
-    List<Room> rooms = new List<Room>();
+    Console.WriteLine(hotel.ToString());
+    Console.WriteLine($"{hotel.HotelName} , in {hotel.Location} {hotel.PostalCode}");
 
-    Hotel hotel = new Hotel();
+    hotel.AddSingleRoom(1, 1);
+    hotel.AddSingleRoom(2, 1);
+    hotel.AddDoubleRoom(3, 2);
+    hotel.AddLuxuryRoom(4, 3);
 
-    hotel.AddRoom();
+    Console.WriteLine(hotel.Rooms.First().RoomType());
+    hotel.ShowAllRooms();
+    hotel.GetAvailableRooms(DateTime.Now,DateTime.Now.AddDays(2));
 
+    hotel.RegisterClient("2900101227952", "Gigi", "Necula", "gigi@necula.com", "07221210111");
+    hotel.RegisterClient("2900101221212", "Giovani", "Hargs", "giovaniecula@gmail.com", "07221210111");
+    hotel.RegisterClient("2900101344112", "Alex", "Liviu", "alexliviu@gmail.com", "072234210111");
+
+    hotel.ShowAllClients();
+
+    hotel.AddBooking("2900101227952", 1, DateTime.Today, DateTime.Today.AddDays(2));
+    hotel.AddBooking("2900101344112", 2, DateTime.Today.AddDays(-5), DateTime.Today.AddDays(-2));
+
+    hotel.AllBookings();
+    hotel.ActiveBooking();
+
+    hotel.RemoveClient("2900101221212");
+    hotel.ShowAllClients();
+
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
+
+    hotel.UpdteRoomPrice(1, 60.2);
     hotel.ShowAllRooms();
 
+    hotel.AddLuxuryRoom(5, 3);
+    hotel.RegisterClient("7621022201344112", "Luca", "Bonariu", "luca@ss.com", "0729421123");
+    hotel.AddBooking("7621022201344112", 3, DateTime.Today, DateTime.Today.AddDays(4));
+
+    hotel.ShowAllRooms();
+    Console.WriteLine("--");
+    hotel.ShowAllClients();
+    Console.WriteLine("--");
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
+
+    Console.WriteLine("Changes on client list and availabity room ");
+
+    hotel.ClearBookingId("7621022201344112");
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
+
+    hotel.ActiveBooking();
+
+
+    HotelMain.ShowAvailableRooms(hotel);
 }
 
 //HotelMain.Run();

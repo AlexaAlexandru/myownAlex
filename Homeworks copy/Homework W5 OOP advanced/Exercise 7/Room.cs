@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+
 namespace Homework_W5_OOP_advanced
 {
 	public abstract class Room
@@ -8,16 +10,36 @@ namespace Homework_W5_OOP_advanced
 		public int Floor { get; set; }
 		public int BedRooms { get; set; }
 		public double Price { get; set; }
+		public Status StatusRoom { get; private set; }
 
-		public Status BookRoom()
+        protected Room(int number, int floor)
+        {
+            Id = Guid.NewGuid();
+			Number = number;
+            Floor = floor;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} - {Number} - {Floor} - {BedRooms} - {StatusRoom}";
+        }
+
+
+        public void BookRoom()
 		{
-			return Status.Booked;
+			StatusRoom = Status.Booked;
 		}
 
 		public Status ClearRoom()
 		{
 			return Status.Available;
 		}
+
+		public string RoomType()
+		{
+			string message = string.Empty;
+            return this.GetType().Name;
+        }
 
 	}
 }

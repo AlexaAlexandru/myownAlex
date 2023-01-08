@@ -9,17 +9,17 @@ namespace Homework_W5_OOP_advanced
         public double Area { get; set; }
         string Icolor.Color { get { return this.color; } set { this.color = value; } }
 
-        public RectangleEx6(double Width,double Height)
+        public RectangleEx6( double width, double height)
 		{
-            this.Width = Width;
-            this.Height = Height;
+            this.Width = width;
+            this.Height = height;
             this.color = "Black";
 		}
 
-        public RectangleEx6(double Width, double Height,string color)
+        public RectangleEx6(double width, double height, string color)
         {
-            this.Width = Width;
-            this.Height = Height;
+            this.Width = width;
+            this.Height = height;
             this.color = color;
         }
 
