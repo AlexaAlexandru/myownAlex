@@ -171,6 +171,7 @@ void RunExercise7()
         PostalCode = 700932,
     };
 
+    Console.WriteLine(hotel.ToString());
     Console.WriteLine($"{hotel.HotelName} , in {hotel.Location} {hotel.PostalCode}");
 
     hotel.AddSingleRoom(1, 1);
@@ -178,8 +179,9 @@ void RunExercise7()
     hotel.AddDoubleRoom(3, 2);
     hotel.AddLuxuryRoom(4, 3);
 
+    Console.WriteLine(hotel.Rooms.First().RoomType());
     hotel.ShowAllRooms();
-    hotel.ShowAvailableRooms(DateTime.Today,DateTime.Today.AddDays(3));
+    hotel.GetAvailableRooms();
 
     hotel.RegisterClient("2900101227952", "Gigi", "Necula", "gigi@necula.com", "07221210111");
     hotel.RegisterClient("2900101221212", "Giovani", "Hargs", "giovaniecula@gmail.com", "07221210111");
@@ -190,14 +192,13 @@ void RunExercise7()
     hotel.AddBooking("2900101227952", 1, DateTime.Today, DateTime.Today.AddDays(2));
     hotel.AddBooking("2900101344112", 2, DateTime.Today.AddDays(-5), DateTime.Today.AddDays(-2));
 
-
     hotel.AllBookings();
     hotel.ActiveBooking();
 
     hotel.RemoveClient("2900101221212");
     hotel.ShowAllClients();
 
-    hotel.ShowAvailableRooms(DateTime.Today, DateTime.Today.AddDays(2));
+    hotel.GetAvailableRooms();
 
     hotel.UpdteRoomPrice(1, 60.2);
     hotel.ShowAllRooms();
@@ -210,13 +211,17 @@ void RunExercise7()
     Console.WriteLine("--");
     hotel.ShowAllClients();
     Console.WriteLine("--");
-    hotel.ShowAvailableRooms(DateTime.Today, DateTime.Today.AddDays(4));
+    hotel.GetAvailableRooms();
 
     Console.WriteLine("Changes on client list and availabity room ");
 
     hotel.ClearBookingId("7621022201344112");
-    hotel.ShowAvailableRooms(DateTime.Today, DateTime.Today.AddDays(4));
+    hotel.GetAvailableRooms();
 
+    hotel.ActiveBooking();
+
+
+    HotelMain.ShowAvailableRooms(hotel);
 }
 
 //HotelMain.Run();

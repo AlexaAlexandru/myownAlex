@@ -25,6 +25,15 @@ namespace Homework_W5_OOP_advanced.Exercise7
             Console.WriteLine("2. Internal Hotel management ");
         }
 
+
+        public static void ShowAvailableRooms(Hotel hotel)
+        {
+            var availableRooms = hotel.GetAvailableRooms();
+            foreach (var availableRoom in availableRooms)
+            {
+                Console.WriteLine(availableRoom);
+            }
+        }
     }
 }
 

@@ -9,7 +9,7 @@ namespace Homework_W5_OOP_advanced
 		public Client Client {  get; private set; }
 		public Room Room {  get; private set; }
 
-		public Booking(Client client, Room room,DateTime checkIn,DateTime checkOut)
+		public Booking(Client client, Room room, DateTime checkIn, DateTime checkOut)
 		{
 			Id = Guid.NewGuid();
 			CheckIn = checkIn;
@@ -17,6 +17,7 @@ namespace Homework_W5_OOP_advanced
 			Client = client;
 			Room = room;
 		}
+
         public double GetNumberOfNights()
         {
             double numberNights = (CheckOut - CheckIn).Days;

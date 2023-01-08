@@ -2,7 +2,7 @@
 {
     public class LuxuryRoom: Room
     {
-		public LuxuryRoom(int number, int floor)
+		public LuxuryRoom(int number, int floor): base(number, floor)
 		{
             Id = Guid.NewGuid();
             Number = number;
