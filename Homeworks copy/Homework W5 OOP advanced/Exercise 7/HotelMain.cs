@@ -28,7 +28,7 @@ namespace Homework_W5_OOP_advanced.Exercise7
 
         public static void ShowAvailableRooms(Hotel hotel)
         {
-            var availableRooms = hotel.GetAvailableRooms();
+            var availableRooms = hotel.GetAvailableRooms(DateTime.Now,DateTime.Now.AddDays(4));
             foreach (var availableRoom in availableRooms)
             {
                 Console.WriteLine(availableRoom);

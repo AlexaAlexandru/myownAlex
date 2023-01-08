@@ -4,10 +4,10 @@ namespace Homework_W5_OOP_advanced
 	public class Circle : Shape
 	{
 		public double Radius { get; set; }
-		public Circle(string Color,double Radius)
+		public Circle(string color,double radius)
 		{
-			this.Color = Color;
-			this.Radius = Radius;
+			this.Color = color;
+			this.Radius = radius;
 		}
 
         public override double CalculateArea()

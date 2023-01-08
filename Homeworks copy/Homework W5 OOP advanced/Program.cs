@@ -181,7 +181,7 @@ void RunExercise7()
 
     Console.WriteLine(hotel.Rooms.First().RoomType());
     hotel.ShowAllRooms();
-    hotel.GetAvailableRooms();
+    hotel.GetAvailableRooms(DateTime.Now,DateTime.Now.AddDays(2));
 
     hotel.RegisterClient("2900101227952", "Gigi", "Necula", "gigi@necula.com", "07221210111");
     hotel.RegisterClient("2900101221212", "Giovani", "Hargs", "giovaniecula@gmail.com", "07221210111");
@@ -198,7 +198,7 @@ void RunExercise7()
     hotel.RemoveClient("2900101221212");
     hotel.ShowAllClients();
 
-    hotel.GetAvailableRooms();
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
 
     hotel.UpdteRoomPrice(1, 60.2);
     hotel.ShowAllRooms();
@@ -211,12 +211,12 @@ void RunExercise7()
     Console.WriteLine("--");
     hotel.ShowAllClients();
     Console.WriteLine("--");
-    hotel.GetAvailableRooms();
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
 
     Console.WriteLine("Changes on client list and availabity room ");
 
     hotel.ClearBookingId("7621022201344112");
-    hotel.GetAvailableRooms();
+    hotel.GetAvailableRooms(DateTime.Now, DateTime.Now.AddDays(2));
 
     hotel.ActiveBooking();
 

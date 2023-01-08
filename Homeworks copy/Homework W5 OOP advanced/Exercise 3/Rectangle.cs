@@ -8,11 +8,11 @@ namespace Homework_W5_OOP_advanced.Exercise3
         public double Width { get; set; }
         public double Height { get; set; }
 
-        public Rectangle(string Color,double Width,double Height)
+        public Rectangle(string color,double width,double height)
         {
-            this.Color = Color;
-            this.Width = Width;
-            this.Height = Height;
+            this.Color = color;
+            this.Width = width;
+            this.Height = height;
         }
 
         public override double CalculateArea()

@@ -4,7 +4,7 @@ using Homework_W5_OOP_advanced.Exercise7;
 
 namespace Homework_W5_OOP_advanced
 {
-	public class Hotel
+	public class Hotel :IHotel
 	{
 		private Guid Id { get; set; }
 		public string HotelName { get; set; }
@@ -25,7 +25,6 @@ namespace Homework_W5_OOP_advanced
             return $"{Id} - {HotelName} - {Location}";
         }
 
-
         public void RegisterClient(string cnp, string firstName, string lastName, string email, string phone)
 		{
 			Clients.Add(new Client(cnp, firstName, lastName, email, phone));
@@ -45,7 +44,6 @@ namespace Homework_W5_OOP_advanced
                 Console.WriteLine(message);
             }
         }
-
 
 		public void AddSingleRoom(int number, int floor)
 		{
@@ -77,7 +75,7 @@ namespace Homework_W5_OOP_advanced
             }
         }
 
-		public Room[] GetAvailableRooms() // still need to implement the timeframe 
+		public Room[] GetAvailableRooms(DateTime from, DateTime to)
         {
             return Rooms.Where(r => r.StatusRoom == Status.Available).ToArray();
         }
@@ -123,14 +121,12 @@ namespace Homework_W5_OOP_advanced
 				}
 			}
 		}
+
 		public void ClearBookingId(string CNP)
 		{
 			Bookings.Find(b => b.Client.CNP == CNP).Room.ClearRoom();
             Bookings.RemoveAll(b => b.Client.CNP== CNP);
-
 		}
-
-        
     }
 }
 

@@ -2,11 +2,11 @@
 {
     public class DoubleRoom : Room
     {
-		public DoubleRoom(int number, int floor): base(number, floor)
+        public string View { get; set; }
+
+        public DoubleRoom(int number, int floor): base(number, floor)
 		{
-            Id = Guid.NewGuid();
-            Number = number;
-            Floor = floor;
+            View = "City view with balcony";
             BedRooms = 2;
 			Price = 80;
 		}

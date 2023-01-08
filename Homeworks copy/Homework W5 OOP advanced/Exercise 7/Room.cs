@@ -39,20 +39,6 @@ namespace Homework_W5_OOP_advanced
 		{
 			string message = string.Empty;
             return this.GetType().Name;
-
-			// if (BedRooms == 1)
-			// {
-			// 	message = "single room";
-   //          }
-   //          if (BedRooms == 2)
-   //          {
-   //              message = "double room";
-   //          }
-   //          if (BedRooms == 3)
-   //          {
-   //              message = "luxury room";
-   //          }
-			// return message;
         }
 
 	}

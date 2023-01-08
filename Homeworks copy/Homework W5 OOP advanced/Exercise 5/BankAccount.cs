@@ -5,19 +5,19 @@ namespace Homework_W5_OOP_advanced
 	{
 		private int accountNumber;
 		private string accountHolder;
-		private double balance;
+		private double _balance;
 		public int AccountNumber { get; set; }
 		public string AccountHolder { get; set; }
 		public double Balance { get; set; }
 
-		public BankAccountEx5(int AccountNumber,string AccountHolder,double Balance)
+		public BankAccountEx5(int accountNumber,string accountHolder,double balance)
 		{
-			this.AccountHolder = AccountHolder;
-			this.AccountNumber = AccountNumber; 
-            if (Balance > 0)
+			this.AccountHolder = accountHolder;
+			this.AccountNumber = accountNumber; 
+            if (balance > 0)
 			{
-				this.Balance = Balance;
-                balance = Balance;
+				_balance = balance;
+				Balance = _balance;
             }
 			else
 			{

@@ -20,11 +20,16 @@ namespace Homework_W5_OOP_advanced
 
         public override string GetContactInfo()
         {
+            string contactInfo = $"Namel :{Name},  Age :{Age}, Deparment: {department} , Email: {GetEmail()}, Phone : {Phone}";
+            return contactInfo;
+        }
+
+        public override string GetEmail()
+        {
             string nameEmail = Name.ToLower().Substring(0, Name.IndexOf(" "));
             string surnameEmail = Name.ToLower().Substring(Name.IndexOf(" ") + 1).Substring(0, 1);
             Email = nameEmail + "." + surnameEmail + "@";
-            string contactInfo = $"Namel :{Name},  Age :{Age}, Deparment: {department} , Email: {Email}, Phone : {Phone}";
-            return contactInfo;
+            return Email;
         }
     }
 }

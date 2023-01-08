@@ -2,11 +2,11 @@
 {
     public class LuxuryRoom: Room
     {
-		public LuxuryRoom(int number, int floor): base(number, floor)
+        public string View { get; set; }
+
+        public LuxuryRoom(int number, int floor): base(number, floor)
 		{
-            Id = Guid.NewGuid();
-            Number = number;
-            Floor = floor;
+            View = "Mountain view with paradise pool";
             BedRooms = 3;
 			Price = 150;
 		}

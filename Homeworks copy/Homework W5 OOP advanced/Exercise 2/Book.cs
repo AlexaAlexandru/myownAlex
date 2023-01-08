@@ -16,10 +16,10 @@ namespace Homework_W5_OOP_advanced.Exercise2
 		
 		public int CurrentPage { get; private set; }
 
-		public Book(string Title, string Author, int pageCount)
+		public Book( string title, string author, int pageCount )
 		{
-			this.Title = Title;
-			this.Author = Author;
+			this.Title = title;
+			this.Author = author;
 			this.pageCount = pageCount;
 			CurrentPage = 1;
 		}
